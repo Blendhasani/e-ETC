@@ -1,0 +1,77 @@
+﻿@model Product
+
+@{
+	ViewData["Title"] = "Fshij produktin";
+}
+
+<div class="row text">
+	
+	<div class="col-md-8 offset-2">
+		<p>
+		<h1>Fshij produktin</h1>
+	</p>
+
+	  <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Delete">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="ProductName" class="control-label"></label>
+                                <input asp-for="ProductName" class="form-control" />
+                                <span asp-validation-for="ProductName" class="text-danger"></span>
+                            </div>
+                             <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Description" class="control-label"></label>
+                                <textarea asp-for="Description" class="form-control"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        </div>
+                            <div class="form-group">
+                                <label asp-for="Produced" class="control-label"></label>
+                                <input asp-for="Produced" type="date" class="form-control" />
+                                <span asp-validation-for="Produced" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Expiration" class="control-label"></label>
+                                <input asp-for="Expiration" type="date" class="form-control" />
+                                <span asp-validation-for="Expiration" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Price" class="control-label"></label>
+                                <input asp-for="Price" type="number" class="form-control" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ImgUrl" class="control-label"></label>
+                                <input asp-for="ImgUrl" class="form-control" />
+                                <span asp-validation-for="ImgUrl" class="text-danger"></span>
+                            </div>
+                        </div>
+                       
+                       
+                    </div>
+
+              
+
+                    <div class="form-group">
+                       
+                        <a class="btn btn-outline-secondary" asp-action="Index">Shfaq te gjitha</a>
+                    </div>
+                    <div class="form-group">
+				<form asp-action="Delete">
+				<input type="hidden" asp-for="Id"/>
+			<input type="submit" value="Confirm" class="btn btn-danger float-right" />
+			</form>
+			</div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>

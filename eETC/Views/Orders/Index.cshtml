@@ -1,0 +1,55 @@
+﻿@model List<Order>
+
+@{
+	ViewData["Title"] = "Te gjitha porosite";
+}
+
+<div class="row">
+	<div class="col-md-8 offset-2">
+		<p>
+			<h4>Te gjitha porosite</h4>
+		</p>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>OrderId</th>
+					<th>Produktet</th>
+					<th>Totali</th>
+					<th>UserId</th>
+					<th>Data</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var order in Model)
+				{
+					<tr>
+						<td class="align-middle">@order.Id</td>
+						<td class="align-middle">
+							<ul style="list-style-type:none">
+								@foreach(var item in order.OrderItems)
+								{
+									<li>
+										<div class="alert alert-info" role="alert">
+											<span class="badge bg-success">@item.Amount</span>[@item.Price] - @item.Product.ProductName
+										</div>
+									</li>
+								}	
+							</ul>
+						</td>
+						<td class="align-middle">
+							@order.OrderItems.Select(p=>p.Product.Price * p.Amount).Sum()
+							</td>
+							<td class="align-middle">
+								-
+							</td>
+							<td class="align-middle">
+								@order.dataPorosise.ToString("dd/MM/yyyy HH:mm:ss")
+
+							</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+		
+	</div>
+</div>

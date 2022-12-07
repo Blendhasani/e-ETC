@@ -1,0 +1,71 @@
+﻿@using eETC.Data.Enum;
+@model Product
+
+
+	@{
+	ViewData["Title"] = "Detajet e produktit";
+}
+@{
+	  ProductCategory p3 = ProductCategory.Tjeter;
+}
+
+
+
+<div class="row">
+
+	
+		   <div class="col-md-8 offset-2">
+            <div class="card mb-12 shadow p-3 mb-5 bg-white rounded">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-white bg-info">
+                            <p class="card-text">
+                                <h5 class="card-title">
+									@Model.ProductName
+								</h5>
+							</p>
+							</div>
+                        </div>
+						<div class="col-md-4">
+                        <img src="@Model.ImgUrl" width="100%" alt="@Model.ProductName">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <p class="card-text">@Model.Description</p>
+                        
+                            <p class="card-text"><b>Kategoria: </b>@Model.ProductCategory</p>
+                        @if (!Model.ProductCategory.Equals(p3))
+                        {
+                          <p class="card-text"><b>Prodhuar: </b>@Model.Produced.ToString("dd/MM/yyyy")</p>
+                            <p class="card-text"><b>Skadon me: </b>@Model.Expiration.ToString("dd/MM/yyyy")</p>   
+                        }
+                       
+                           <p class="card-text">
+                              
+                                <p  asp-controller="Products" asp-action="Details" asp-route-id="@Model.StateId">
+                                    <b>Prodhuar ne fabriken : </b>  @Model.State.FactoryName , <i><b>@Model.State.Name</b></i> 
+                                </p>
+                             </p>
+                           
+                                </div>
+                                </div>
+
+                       <div class="col-md-12">
+                        <div class="card-footer ">
+                            <p class="card-text">
+                                <a class="btn btn-outline-primary float-right" asp-action="Index" >
+                                  Kthehu prapa
+                                </a>
+                                <a class="btn btn-success text-white"  asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@Model.Id">
+                                <i class="bi bi-cart-plus"></i> Shto ne shporte (@Model.Price&euro;)</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+	
+</div>
+

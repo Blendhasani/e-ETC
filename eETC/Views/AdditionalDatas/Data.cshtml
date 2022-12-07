@@ -1,0 +1,65 @@
+﻿@using eETC.Data.Enum
+@using eETC.Data.ViewModels;
+@model AdditionalData
+
+@{
+    ViewData["Title"] = "Te dhenat";
+
+
+}
+
+
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h4>Shkruani te dhenat tuaja</h4>
+        </p>
+
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Perfundimi">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Qyteti" class="control-label"></label>
+                                <input asp-for="Qyteti" class="form-control" />
+                                <span asp-validation-for="Qyteti" class="text-danger"></span>
+                            </div>
+                        
+                            <div class="form-group">
+                                <label asp-for="Rruga" class="control-label"></label>
+                                <textarea asp-for="Rruga" class="form-control"></textarea>
+                                <span asp-validation-for="Rruga" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NrTel" class="control-label"></label>
+                                <input asp-for="NrTel" type="text"  step="any" class="form-control" />
+                                <span asp-validation-for="NrTel" class="text-danger"></span>
+                            </div>
+                        </div>
+                           
+                          
+                            
+                    
+                       
+                       
+                    </div>
+
+                   
+
+                    <div class="form-group">
+                        <input type="submit" value="Shto" class="btn btn-outline-success float-right" asp-controller="AdditionalDatas"asp-action="Perfundimi" />
+                        <a class="btn btn-outline-secondary" asp-controller="Products"asp-action="Index">Kthehu prapa</a>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
