@@ -1,4 +1,6 @@
 ﻿@using eETC.Data.Enum;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
 @model IEnumerable<Product>
 
 @{
@@ -8,7 +10,16 @@
 @{
 	  ProductCategory p3 = ProductCategory.Tjeter;
 }
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page = page }),
+    new X.PagedList.Mvc.Common.PagedListRenderOptions
+    {
+        DisplayItemSliceAndTotal = true,
+        ContainerDivClasses = new[] { "navigation" },
+        LiElementClasses = new[] { "page-item" },
+        PageClasses = new[] { "page-link" },
+    })
 <div class="row ">
+	
 	@foreach (var item in Model)
 	{
 		  
@@ -59,11 +70,19 @@
 
 		}
 	}
+
 </div>
 
 
 @await Html.PartialAsync("_CreateItem","Products")
 
-
-
-
+@section Scripts{
+    <script>
+        // Workaround to fix style of text for showing items .. through ..
+        // Problem related to Boostrap 4 according to issue in link below
+        // https://github.com/dncuug/X.PagedList/issues/127
+        $(document).ready(function () {
+            $('ul.pagination > li.disabled > a').addClass('page-link');
+        });
+    </script>
+}

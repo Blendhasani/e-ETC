@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace eETC.Data.Base
 {
@@ -27,9 +29,11 @@ namespace eETC.Data.Base
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public async Task<IEnumerable<T>> GetAllAsync(int? page)
 		{
-            var result = await _context.Set<T>().ToListAsync();
+			var pageNumber = page ?? 1;
+			int pageSize = 6;
+			var result =  _context.Set<T>().ToPagedList(pageNumber,pageSize);
             return result;
 		}
 

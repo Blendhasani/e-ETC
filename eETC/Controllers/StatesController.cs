@@ -17,9 +17,9 @@ namespace eETC.Controllers
         {
             _service = service;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
-            var states = await _service.GetAllAsync();
+            var states = await _service.GetAllAsync(page);
             return View(states);
         }
 

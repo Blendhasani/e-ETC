@@ -21,9 +21,10 @@ namespace eETC.Controllers
             _service = service; 
 
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
-            var allProducts = await _service.GetAllAsync();
+          
+            var allProducts = await _service.GetAllAsync(page);
             return View(allProducts);
         }
 
@@ -129,7 +130,7 @@ namespace eETC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> FilterL()
+      /*  public async Task<IActionResult> FilterL()
         {
           var products = await _service.GetAllAsync();
             ProductCategory p1 = ProductCategory.Lengje;
@@ -192,7 +193,7 @@ namespace eETC.Controllers
             }
             return View("Index", products);
         }
-
+*/
 
         public async Task<IActionResult> Details (int id)
         {
